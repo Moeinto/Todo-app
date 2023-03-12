@@ -1,6 +1,6 @@
-
 <template>
   <div>
+    <!-- <br/> -->
     <p>Todo App</p>
     <TodoForm />
   </div>
@@ -27,9 +27,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #b0d8ff;
+  background-color: #6502bb;
   font-weight: 800;
   font-size: 2rem;
   margin-top: 60px;
+  width: 40%;
+  height: auto;
+  margin: 0 auto;
+  padding-bottom: 5rem;
 }
 
 </style>
