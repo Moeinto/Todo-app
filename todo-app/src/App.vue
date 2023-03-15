@@ -1,18 +1,22 @@
 <template>
   <div>
-    <!-- <br/> -->
-    <p>Todo App</p>
+    <br/>
+    <p><strong>Todo App</strong></p>
     <TodoForm />
+    <TodoList />
   </div>
 </template>
 
 <script>
 import TodoForm from './components/TodoForm.vue';
+import TodoList from './components/TodoList.vue';
 
 export default {
   name: 'App',
   components: {
-    TodoForm
+    TodoForm,
+    TodoList
+
   }
 }
 </script>
@@ -28,8 +32,6 @@ body {
   text-align: center;
   color: #b0d8ff;
   background-color: #6502bb;
-  font-weight: 800;
-  font-size: 2rem;
   margin-top: 60px;
   width: 40%;
   height: auto;

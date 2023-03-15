@@ -3,19 +3,34 @@
     <input type="text" id="text-input" placeholder="Enter Your Task" v-model="newTodo" />
     <input type="button" id="submit-input" value="Submit" @click="addTodo" />
   </div>
+  <div>
+    <ul>
+      <li v-for="(task, index) in allTasks" :key="index" :task="task" @completed="completeTask">{{ task.title }}</li>
+    </ul>
+  </div>
 </template>
   
 <script>
 export default {
   data() {
     return {
-      newTodo: ''
+      newTodo: '',
+      allTasks: []
     }
   },
   methods: {
     addTodo() {
-
+      this.allTasks.push({
+        title: this.newTodo,
+        isComplated : false
+      })
+      console.log(this.allTasks)
+      this.newTodo = ''
+    },
+    completeTask(task) {
+      task.isCompleted = true;
     }
+
   }
 }
 </script>
