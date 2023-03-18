@@ -1,12 +1,13 @@
 <template>
   <div class="todo-form">
-    <input type="text" id="text-input" placeholder="Enter Your Task" v-model="newTodo" />
+    <input type="text" id="text-input" placeholder="Enter Your Task" v-model="newTodo" @keyup.enter="addTodo"/>
     <input type="button" id="submit-input" value="Submit" @click="addTodo" />
   </div>
   <div>
     <ul>
-      <li class="task-item" :class="{ 'task-complated': task.isCompleted }" v-for="(task, index) in allTasks"
-        :key="index" :task="task" @click="completeTask(task)">{{ task.title }}<button class="btn-clear" @click="deleteTask(index)">Delete</button></li>
+      <li class="task-item" :class="{ 'task-complated': task.isCompleted }" v-for="(task, index) in allTasks" :key="index"
+        :task="task" @click="completeTask(task)">{{ task.title }}<button class="btn-clear"
+          @click="deleteTask(index)">Delete</button></li>
     </ul>
   </div>
 </template>
@@ -22,20 +23,21 @@ export default {
   },
   methods: {
     addTodo() {
-      this.allTasks.push({
-        title: this.newTodo,
-        isCompleted: false
-      });
-      console.log(this.allTasks);
-      this.newTodo = '';
+      if (this.newTodo != "") {
+        this.allTasks.push({
+          title: this.newTodo,
+          isCompleted: false
+        });
+        console.log(this.allTasks);
+        this.newTodo = '';
+      }
     },
     completeTask(task) {
       task.isCompleted = true
       console.log(task.isCompleted);
     },
-    deleteTask(index){
-      console.log("click shod",index)
-      
+    deleteTask(index) {
+      console.log("click shod", index)
       this.allTasks.splice(index, 1)
     }
   },
@@ -74,7 +76,8 @@ export default {
   text-align: center;
   overflow: hidden;
 }
-.btn-clear{
+
+.btn-clear {
   background-color: rgb(225, 97, 97);
   font-size: smaller;
   margin-left: 20rem;
@@ -84,5 +87,4 @@ export default {
   background-color: rgb(136, 213, 136);
   color: black;
   text-decoration: line-through;
-}
-</style>
+}</style>
