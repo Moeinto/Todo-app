@@ -1,21 +1,33 @@
 <template>
     <ul>
-        <li v-for="(task, index) in tasks" :key="index" :task="task" @task-completed="completeTask"></li>
+        <li v-for="(task, index) in allTasks" :key="index" :task="task" @completed="completeTask">{{ task.title }}</li>
+
     </ul>
 </template>
+
 <script>
 export default {
-    data(){
-        return{
-            tasks : [],
+
+    data() {
+        return {
+            allTasks: [],
         }
-    },methods: {
-        
+    }s
+    ,
+    methods: {
+        addTodo() {
+            this.allTasks.push({
+                title: this.newTodo,
+                isCompleted: false
+            })
+            console.log(this.allTasks)
+            this.newTodo = ''
+        },
+        completeTask(task) {
+            task.isCompleted = true;
+        }
     },
-
-
-
 }
-
 </script>
+
 <style></style>
